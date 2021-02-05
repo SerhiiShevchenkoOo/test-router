@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Fofo from '@component/component.jsx';
 import { useRoutes, A, useRedirect, setBasepath } from 'hookrouter';
 // import PropsTypes from 'prop-types'
-setBasepath('/dist');
+setBasepath('/test-router/dist');
 
 const routes = {
 	'/': () => <p>users</p>,
