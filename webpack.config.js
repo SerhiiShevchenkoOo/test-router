@@ -6,9 +6,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
+
 (autoprefixer = require('autoprefixer')),
 	(plugin = autoprefixer({ grid: true })),
 	(optimization = () => {
@@ -65,6 +65,7 @@ module.exports = {
 	output: {
 		filename: './script/[name].bundle.js',
 		path: path.resolve(__dirname, 'dist'),
+		publicPath: '/',
 	},
 	resolve: {
 		//	extensions: ['.js', '.jsx'],
@@ -79,7 +80,7 @@ module.exports = {
 	},
 	optimization: optimization(),
 	devServer: {
-		contentBase: path.join(__dirname, 'dist'),
+		historyApiFallback: true,
 		port: 3000,
 		hot: isDev,
 	},
@@ -91,6 +92,10 @@ module.exports = {
 				{
 					from: './assets',
 					to: './assets',
+				},
+				{
+					from: './public',
+					to: './public',
 				},
 			],
 		}),

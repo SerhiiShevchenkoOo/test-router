@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Fofo from '@component/component.jsx';
-import { useRoutes, A, useRedirect, setBasepath } from 'hookrouter';
+import { createBrowserHistory } from 'history';
+import { useRoutes, A, useRedirect, setBasepath, usePath } from 'hookrouter';
+import { Router, BrowserRouter, Link } from 'react-router-dom';
 // import PropsTypes from 'prop-types'
-setBasepath('/test-router/dist');
-
+usePath('/dist');
 const routes = {
 	'/': () => <p>users</p>,
 	'/about': () => <p>about</p>,
